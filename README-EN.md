@@ -10,17 +10,38 @@ Supports four different syntax styles, semantically similar to Rust's `match`, a
 
 ## 📦 Installation & Import
 
-### Node.js
+### npm Package
+
+```bash
+# npm
+npm install @mhxy13867806343/js-match
+
+# yarn
+yarn add @mhxy13867806343/js-match
+
+# pnpm
+pnpm add @mhxy13867806343/js-match
+```
+
+### Usage in Node.js
+
+```js
+const match = require('@mhxy13867806343/js-match');
+// or ES6 import
+import match from '@mhxy13867806343/js-match';
+```
+
+### Browser (CDN)
+
+```html
+<script src="https://unpkg.com/@mhxy13867806343/js-match@latest/match.js"></script>
+<!-- Available as window.match -->
+```
+
+### Local Development
 
 ```js
 const match = require('./match.js');
-```
-
-### Browser
-
-```html
-<script src="./match.js"></script>
-<!-- Available as window.match -->
 ```
 
 ---

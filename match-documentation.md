@@ -14,17 +14,38 @@
 
 ## 📦 安装与引入
 
-### Node.js
+### npm包安装
+
+```bash
+# npm
+npm install @mhxy13867806343/js-match
+
+# yarn
+yarn add @mhxy13867806343/js-match
+
+# pnpm
+pnpm add @mhxy13867806343/js-match
+```
+
+### Node.js中使用
+
+```js
+const match = require('@mhxy13867806343/js-match');
+// 或 ES6 导入
+import match from '@mhxy13867806343/js-match';
+```
+
+### 浏览器 (CDN)
+
+```html
+<script src="https://unpkg.com/@mhxy13867806343/js-match@latest/match.js"></script>
+<!-- 挂载为 window.match -->
+```
+
+### 本地开发
 
 ```js
 const match = require('./match.js');
-```
-
-### 浏览器
-
-```html
-<script src="./match.js"></script>
-<!-- 挂载为 window.match -->
 ```
 
 ---
