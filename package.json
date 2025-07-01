@@ -1,0 +1,43 @@
+{
+  "name": "js-match",
+  "version": "1.1.0",
+  "description": "A universal zero-dependency pattern matching tool for JavaScript, inspired by Rust's match syntax",
+  "main": "match.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "match",
+    "pattern-matching",
+    "rust",
+    "functional",
+    "javascript",
+    "zero-dependency",
+    "typescript",
+    "vue",
+    "react"
+  ],
+  "author": {
+    "name": "mhxy13867806343",
+    "email": "869710179@qq.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhxy13867806343/js-match.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mhxy13867806343/js-match/issues"
+  },
+  "homepage": "https://github.com/mhxy13867806343/js-match#readme",
+  "files": [
+    "match.js",
+    "README-EN.md",
+    "match-documentation.md",
+    "LICENSE",
+    "test/"
+  ],
+  "engines": {
+    "node": ">=8.0.0"
+  }
+} 
