@@ -31,6 +31,19 @@ const match = require('@mhxy13867806343/js-match');
 import match from '@mhxy13867806343/js-match';
 ```
 
+### TypeScript Support
+
+```typescript
+import match from '@mhxy13867806343/js-match';
+
+// Full type safety
+const result: string = match<number>(85)
+  .with(n => n >= 90, 'A')
+  .with(n => n >= 80, 'B')
+  .otherwise('F')
+  .run();
+```
+
 ### Browser (CDN)
 
 ```html

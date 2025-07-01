@@ -1,1 +1,362 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-Match Library Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .test-title {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            border-left: 4px solid #007ACC;
+        }
+        .result {
+            background-color: #e8f5e8;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #28a745;
+        }
+        .error {
+            background-color: #ffe8e8;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #dc3545;
+        }
+        button {
+            background-color: #007ACC;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #005999;
+        }
+        .output {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 JS-Match Library Test Suite</h1>
+        
+        <!-- Test 1: Basic Value Matching -->
+        <div class="test-section">
+            <div class="test-title">1. Basic Value Matching</div>
+            <div class="code-block">
+const result = match('apple')
+  .with('apple', '🍎 This is an apple')
+  .with('banana', '🍌 This is a banana')
+  .otherwise('❓ Unknown fruit')
+  .run();
+            </div>
+            <button onclick="testBasicMatching()">Run Test</button>
+            <div id="test1-output" class="output"></div>
+        </div>
+
+        <!-- Test 2: Function Condition Matching -->
+        <div class="test-section">
+            <div class="test-title">2. Function Condition Matching</div>
+            <div class="code-block">
+const number = 85;
+const grade = match(number)
+  .with(n => n >= 90, 'A')
+  .with(n => n >= 80, 'B')
+  .with(n => n >= 70, 'C')
+  .with(n => n >= 60, 'D')
+  .otherwise('F')
+  .run();
+            </div>
+            <button onclick="testFunctionMatching()">Run Test</button>
+            <div id="test2-output" class="output"></div>
+        </div>
+
+        <!-- Test 3: Object Pattern Matching -->
+        <div class="test-section">
+            <div class="test-title">3. Object Pattern Matching</div>
+            <div class="code-block">
+const user = { type: 'admin', active: true, name: 'John' };
+const result = match(user)
+  .with({ type: 'admin', active: true }, u => `👑 Admin: ${u.name}`)
+  .with({ type: 'user', active: true }, u => `👤 User: ${u.name}`)
+  .with({ active: false }, '🚫 Disabled account')
+  .otherwise('❓ Unknown user type')
+  .run();
+            </div>
+            <button onclick="testObjectMatching()">Run Test</button>
+            <div id="test3-output" class="output"></div>
+        </div>
+
+        <!-- Test 4: Chain Style -->
+        <div class="test-section">
+            <div class="test-title">4. Chain Style</div>
+            <div class="code-block">
+const status = 'loading';
+const result = match.chain(status)
+  .case('loading', '⏳ Loading...')
+  .case('success', '✅ Success!')
+  .case('error', '❌ Error occurred')
+  .default('❓ Unknown status');
+            </div>
+            <button onclick="testChainStyle()">Run Test</button>
+            <div id="test4-output" class="output"></div>
+        </div>
+
+        <!-- Test 5: One-line When Style -->
+        <div class="test-section">
+            <div class="test-title">5. One-line When Style</div>
+            <div class="code-block">
+const day = 'Monday';
+const result = match.when(day, {
+  'Monday': '😴 Start of the week',
+  'Friday': '🎉 TGIF!',
+  'Saturday': '🏖️ Weekend!',
+  'Sunday': '😰 Tomorrow is Monday',
+  '_': '📅 Regular day'
+});
+            </div>
+            <button onclick="testWhenStyle()">Run Test</button>
+            <div id="test5-output" class="output"></div>
+        </div>
+
+        <!-- Test 6: Rust Style -->
+        <div class="test-section">
+            <div class="test-title">6. Rust Style</div>
+            <div class="code-block">
+const temperature = 25;
+const result = match.rust(temperature, [
+  [t => t < 0, '🧊 Freezing'],
+  [t => t < 10, '❄️ Cold'],
+  [t => t < 20, '🌤️ Cool'],
+  [t => t < 30, '☀️ Warm'],
+  ['_', '🔥 Hot']
+]);
+            </div>
+            <button onclick="testRustStyle()">Run Test</button>
+            <div id="test6-output" class="output"></div>
+        </div>
+
+        <!-- Test 7: Error Handling -->
+        <div class="test-section">
+            <div class="test-title">7. Error Handling (No Match)</div>
+            <div class="code-block">
+try {
+  const result = match('unknown')
+    .with('known', 'This is known')
+    .run(); // Will throw error
+} catch (error) {
+  console.log('Error:', error.message);
+}
+            </div>
+            <button onclick="testErrorHandling()">Run Test</button>
+            <div id="test7-output" class="output"></div>
+        </div>
+
+        <!-- Test All Button -->
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="runAllTests()" style="background-color: #28a745; padding: 15px 30px; font-size: 16px;">
+                🧪 Run All Tests
+            </button>
+        </div>
+    </div>
+
+    <!-- Import the match.js library -->
+    <script src="../match.js"></script>
+
+    <script>
+        // Test 1: Basic Value Matching
+        function testBasicMatching() {
+            try {
+                const result = match('apple')
+                    .with('apple', '🍎 This is an apple')
+                    .with('banana', '🍌 This is a banana')
+                    .otherwise('❓ Unknown fruit')
+                    .run();
+                
+                document.getElementById('test1-output').innerHTML = 
+                    `<div class="result"><strong>Result:</strong> ${result}</div>`;
+            } catch (error) {
+                document.getElementById('test1-output').innerHTML = 
+                    `<div class="error"><strong>Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        // Test 2: Function Condition Matching
+        function testFunctionMatching() {
+            try {
+                const number = 85;
+                const grade = match(number)
+                    .with(n => n >= 90, 'A')
+                    .with(n => n >= 80, 'B')
+                    .with(n => n >= 70, 'C')
+                    .with(n => n >= 60, 'D')
+                    .otherwise('F')
+                    .run();
+                
+                document.getElementById('test2-output').innerHTML = 
+                    `<div class="result"><strong>Number:</strong> ${number}<br><strong>Grade:</strong> ${grade}</div>`;
+            } catch (error) {
+                document.getElementById('test2-output').innerHTML = 
+                    `<div class="error"><strong>Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        // Test 3: Object Pattern Matching
+        function testObjectMatching() {
+            try {
+                const user = { type: 'admin', active: true, name: 'John' };
+                const result = match(user)
+                    .with({ type: 'admin', active: true }, u => `👑 Admin: ${u.name}`)
+                    .with({ type: 'user', active: true }, u => `👤 User: ${u.name}`)
+                    .with({ active: false }, '🚫 Disabled account')
+                    .otherwise('❓ Unknown user type')
+                    .run();
+                
+                document.getElementById('test3-output').innerHTML = 
+                    `<div class="result"><strong>User:</strong> ${JSON.stringify(user)}<br><strong>Result:</strong> ${result}</div>`;
+            } catch (error) {
+                document.getElementById('test3-output').innerHTML = 
+                    `<div class="error"><strong>Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        // Test 4: Chain Style
+        function testChainStyle() {
+            try {
+                const status = 'loading';
+                const result = match.chain(status)
+                    .case('loading', '⏳ Loading...')
+                    .case('success', '✅ Success!')
+                    .case('error', '❌ Error occurred')
+                    .default('❓ Unknown status');
+                
+                document.getElementById('test4-output').innerHTML = 
+                    `<div class="result"><strong>Status:</strong> ${status}<br><strong>Result:</strong> ${result.value}</div>`;
+            } catch (error) {
+                document.getElementById('test4-output').innerHTML = 
+                    `<div class="error"><strong>Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        // Test 5: One-line When Style
+        function testWhenStyle() {
+            try {
+                const day = 'Monday';
+                const result = match.when(day, {
+                    'Monday': '😴 Start of the week',
+                    'Friday': '🎉 TGIF!',
+                    'Saturday': '🏖️ Weekend!',
+                    'Sunday': '😰 Tomorrow is Monday',
+                    '_': '📅 Regular day'
+                });
+                
+                document.getElementById('test5-output').innerHTML = 
+                    `<div class="result"><strong>Day:</strong> ${day}<br><strong>Result:</strong> ${result}</div>`;
+            } catch (error) {
+                document.getElementById('test5-output').innerHTML = 
+                    `<div class="error"><strong>Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        // Test 6: Rust Style
+        function testRustStyle() {
+            try {
+                const temperature = 25;
+                const result = match.rust(temperature, [
+                    [t => t < 0, '🧊 Freezing'],
+                    [t => t < 10, '❄️ Cold'],
+                    [t => t < 20, '🌤️ Cool'],
+                    [t => t < 30, '☀️ Warm'],
+                    ['_', '🔥 Hot']
+                ]);
+                
+                document.getElementById('test6-output').innerHTML = 
+                    `<div class="result"><strong>Temperature:</strong> ${temperature}°C<br><strong>Result:</strong> ${result}</div>`;
+            } catch (error) {
+                document.getElementById('test6-output').innerHTML = 
+                    `<div class="error"><strong>Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        // Test 7: Error Handling
+        function testErrorHandling() {
+            try {
+                const result = match('unknown')
+                    .with('known', 'This is known')
+                    .run(); // Will throw error
+                
+                document.getElementById('test7-output').innerHTML = 
+                    `<div class="result"><strong>Result:</strong> ${result}</div>`;
+            } catch (error) {
+                document.getElementById('test7-output').innerHTML = 
+                    `<div class="error"><strong>Expected Error:</strong> ${error.message}</div>`;
+            }
+        }
+
+        // Run all tests
+        function runAllTests() {
+            testBasicMatching();
+            testFunctionMatching();
+            testObjectMatching();
+            testChainStyle();
+            testWhenStyle();
+            testRustStyle();
+            testErrorHandling();
+            
+            // Show completion message
+            setTimeout(() => {
+                alert('🎉 All tests completed! Check the results above.');
+            }, 500);
+        }
+
+        // Run a simple test on page load
+        window.onload = function() {
+            console.log('🚀 JS-Match library loaded successfully!');
+            console.log('Click the buttons to test different matching styles.');
+        };
+    </script>
+</body>
+</html> 
