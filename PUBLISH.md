@@ -103,4 +103,4 @@ pnpm add @mhxy13867806343/js-match
 - ✅ **Gitee**: 已同步
 - ✅ **更新日志**: 已创建
 - ✅ **多包管理器支持**: npm, yarn, pnpm
-- ⏳ **npm**: 待发布（需要手动登录并执行 `npm publish --access public`） 
+- ✅ **npm**: 已发布（v1.2.0） 

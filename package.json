@@ -1,6 +1,6 @@
 {
   "name": "@mhxy13867806343/js-match",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A universal zero-dependency pattern matching tool for JavaScript, inspired by Rust's match syntax",
   "main": "match.js",
   "scripts": {
@@ -32,6 +32,7 @@
   "homepage": "https://github.com/mhxy13867806343/js-match#readme",
   "files": [
     "match.js",
+    "README.md",
     "README-EN.md",
     "match-documentation.md",
     "LICENSE",
